@@ -1,0 +1,59 @@
+<h2>Staff Dashboard </h2>
+<hr/><hr/>
+<div class="row">
+  <div class="col-6">
+    <h4>Search Artist</h4>
+    <div class="input-group">
+      <input [(ngModel)]="keyword" class="form-control">
+      <div class="input-group-append">
+        <button (click)="search(keyword)" class="btn btn-primary">
+          Search
+        </button>
+      </div>
+    </div>
+
+    <h4>Search Results</h4>
+    <ul class="list-group">
+      <i (click)="details(artist.name)"
+         class="list-group-item">
+        <img src="{{artist.image_url}}"
+             width="200px">
+        {{artist.name}}
+      </i>
+    </ul>
+  </div>
+
+  <div class="col-6">
+    <h4>Events of {{artist.name}}</h4>
+    <!--<img src="{{artist.image_url}}"/>-->
+    <li *ngFor="let e of events"
+        class="list-group-item">
+      Date time:<i> {{e.datetime}}</i>
+      <br>On sale time: <i>{{e.on_sale_datetime}}</i>
+      <br>Description: <i>{{e.description}}</i>
+      <br>Country:<i> {{e.venue.country}}</i>
+      <br>City:<i> {{e.venue.city}}</i>
+    </li>
+  </div>
+</div>
+<hr/>
+
+<!--search staff id to get ticket-->
+<h4>View Sold Ticket (Enter Staff ID)</h4>
+<div class="input-group">
+  <input [(ngModel)]="staff_id" class="form-control">
+  <div class="input-group-append">
+    <button (click)="searchstaffticket(staff_id)" class="btn btn-primary">
+      Search
+    </button>
+  </div>
+</div>
+<div>
+<li *ngFor="let t of tickets"
+    class="list-group-item">
+  Ticket Id:<i> {{t.id}}</i>
+  <br>Price: <i>{{t.price}}</i>
+  <br>Showname: <i>{{t.showName}}</i>
+  <br>Date:<i> {{t.date}}</i>
+</li>
+</div>

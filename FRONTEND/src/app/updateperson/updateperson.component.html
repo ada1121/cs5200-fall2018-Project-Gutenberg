@@ -1,0 +1,38 @@
+<h1>Update</h1>
+
+<div [hidden]="submitted" style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="input-group">
+      <div><p>First Name</p>
+        {{personfk.id}}
+        <input [(ngModel)]="customer.firstName" class="form-control" name="firstName">
+      </div>
+
+      <div><p>Last Name</p>
+        <input [(ngModel)]="customer.lastName" class="form-control" name="lastName">
+      </div>
+
+      <div><p>Username</p>
+        <input [(ngModel)]="customer.username" class="form-control" name="username">
+      </div>
+
+      <div><p>Password</p>
+        <input [(ngModel)]="customer.password" class="form-control" name="password">
+      </div>
+
+      <hr />
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-success" (click)="updatePerson(customer.firstName,
+        customer.lastName, customer.username, customer.password)">
+          Submit
+        </button>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+</div>

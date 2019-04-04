@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-6">
+    <h1>Search Artist</h1>
+    <div class="input-group">
+      <input [(ngModel)]="keyword" class="form-control">
+      <div class="input-group-append">
+        <button (click)="search(keyword)" class="btn btn-primary">
+        Search
+        </button>
+      </div>
+    </div>
+
+    <h2>Search Results</h2>
+    <ul class="list-group">
+        <i (click)="details(artist.name)"
+            class="list-group-item">
+          <img src="{{artist.image_url}}"
+            width="200px">
+          {{artist.name}}
+        </i>
+    </ul>
+  </div>
+
+  <div class="col-6">
+    <h2>Events of {{artist.name}}</h2>
+    <li *ngFor="let e of events"
+        class="list-group-item">
+      Date time:<i> {{e.datetime}}</i>
+      <br>On sale time: <i>{{e.on_sale_datetime}}</i>
+      <br>Description: <i>{{e.description}}</i>
+      <br>Country:<i> {{e.venue.country}}</i>
+      <br>City:<i> {{e.venue.city}}</i>
+
+    </li>
+    <p>{{event.artist_id}}</p>
+    <!--<p>{{artist.Plot}}</p>
+    -->
+  </div>
+
+</div>

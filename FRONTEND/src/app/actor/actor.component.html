@@ -1,0 +1,38 @@
+<h1>Welcome Actor!</h1>
+<!--search shows and buy ticket-->
+<hr/><hr/>
+
+<!--search customer id to get ticket-->
+<h2>View your show</h2>
+<h3>Please input your Actor Id</h3>
+<div class="input-group">
+  <input [(ngModel)]="actor_id" class="form-control">
+  <div class="input-group-append">
+    <button (click)="searchactorshow(actor_id)" class="btn btn-primary">
+      Search
+    </button>
+  </div>
+</div>
+<div>
+  <li *ngFor="let s of shows"
+      class="list-group-item">
+    Show Id:<i> {{s.id}}</i>
+    <br>Name: <i>{{s.name}}</i>
+    <br>Date: <i>{{s.date}}</i>
+    <br>Description:<i> {{s.description}}</i>
+  </li>
+</div>
+<hr/>
+
+<!--view comment-->
+<div>
+  <button (click)="searchComment()" class="btn btn-primary">
+    View Comments
+  </button>
+</div>
+<div>
+  <li *ngFor="let c of comments" class ="list-group-item">
+    <i> Comment id: {{c.id}}</i>
+    <br> <i>Context: {{c.context}}</i>
+  </li>
+</div>

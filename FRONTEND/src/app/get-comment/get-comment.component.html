@@ -1,0 +1,48 @@
+<h4>Comment Id:{{comment.id}} </h4>
+<div [hidden]="submitted">
+  <form (ngSubmit)="update()" #detailCustomerForm="ngForm">
+    <div class="form-group">
+      <label for="context">Context</label>
+      <input type="text" class="form-control" id="context" required
+             [(ngModel)]="comment.context" name="context" #context="ngModel">
+      <!--<div [hidden]="context.valid || context.pristine"-->
+           <!--class="alert alert-danger">-->
+        <!--Context is required-->
+      <!--</div>-->
+    </div>
+    <div class="form-group">
+      <label for="customer_id">Customer_id</label>
+      <input type="number" class="form-control" id="customer_id" required
+             [(ngModel)]="comment.customer_id" name="customer_id" #customer_id="ngModel">
+      <!--<div [hidden]="customer_id.valid || customer_id.pristine"-->
+           <!--class="alert alert-danger">-->
+        <!--Customer_id is required.-->
+      <!--</div>-->
+    </div>
+    <div class="form-group">
+      <label for="show_id">Show_id</label>
+      <input type="number" class="form-control" id="show_id" required
+             [(ngModel)]="comment.show_id" name="show_id" #show_id="ngModel">
+      <!--<div [hidden]="age.valid || age.pristine"-->
+           <!--class="alert alert-danger">-->
+        <!--Age is required-->
+      <!--</div>-->
+    </div>
+    <div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+      <button type="submit" class="btn btn-dark" [disabled]="!detailCustomerForm.form.valid">Update</button>
+      <!--<button class="btn btn-dark" (click)="delete()">Delete</button>-->
+    </div>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <p>{{message}}</p >
+  <div class="btn-group btn-group-sm">
+    <button class="btn btn-dark" (click)="goBack()">Back</button>
+  </div>
+</div>
+
+<br>
+
+

@@ -1,0 +1,37 @@
+<h3>Create Comment</h3>
+
+<div [hidden]="submitted" style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="input-group">
+      <div><p>Comment</p>
+        <input [(ngModel)]="comment.context" class="form-control" name="context">
+      </div>
+
+      <div><p>Customer_id</p>
+      <input [(ngModel)]="comment.customer_id" class="form-control" name="customer_id">
+      </div>
+
+      <div><p>Show_id</p>
+        <input [(ngModel)]="comment.show_id" class="form-control" name="show_id">
+      </div>
+
+      <hr />
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-success" (click)="addCommentadmin(comment.context, comment.customer_id,
+        comment.show_id)">
+          Submit
+        </button>
+      </div>
+    </div>
+
+
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <div class="btn-group btn-group-sm">
+    <button class="btn btn-dark" (click)="goBack()">Back</button>
+  </div>
+</div>

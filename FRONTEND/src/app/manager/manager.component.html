@@ -1,0 +1,86 @@
+<h2>Welcome Manager!</h2>
+<hr/><hr/>
+
+<!--View staffs-->
+<div>
+  <button (click)="searchStaffs()" class="btn btn-primary">
+    View Staff
+  </button>
+</div>
+<div>
+  <li *ngFor="let st of staffs" class ="list-group-item">
+         <i> Id: {{st.id}} </i>
+    <br> <i> LastName: {{st.lastName}} </i>
+    <br> <i> FirstName: {{st.firstName}} </i>
+    <br> <i> Username: {{st.username}}</i>
+  </li>
+</div>
+<hr/>
+
+<!--View actors-->
+<div>
+  <button (click)="searchActor()" class="btn btn-primary">
+    View Actor
+  </button>
+</div>
+<div>
+  <li *ngFor="let a of actors" class ="list-group-item">
+    <i> Id: {{a.id}} </i>
+    <br> <i> LastName: {{a.lastName}} </i>
+    <br> <i> FirstName: {{a.firstName}} </i>
+    <br> <i> Username: {{a.username}}</i>
+  </li>
+</div>
+
+<hr/>
+<button (click)="searchComment()" class="btn btn-primary">
+  View Comments
+</button>
+<div>
+  <li *ngFor="let c of comments" class ="list-group-item">
+    <i> Comment Id: {{c.id}} </i>
+    <br> <i> Context: {{c.context}}</i>
+  </li>
+</div>
+<hr/>
+<div class="row">
+  <div class="col-6">
+    <h4>Search Artist</h4>
+    <div class="input-group">
+      <input [(ngModel)]="keyword" class="form-control">
+      <div class="input-group-append">
+        <button (click)="search(keyword)" class="btn btn-primary">
+          Search
+        </button>
+      </div>
+    </div>
+
+    <h4>Search Results</h4>
+    <ul class="list-group">
+      <i (click)="details(artist.name)"
+         class="list-group-item">
+        <img src="{{artist.image_url}}"
+             width="200px">
+        {{artist.name}}
+      </i>
+    </ul>
+  </div>
+
+  <div class="col-6">
+    <h4>Events of {{artist.name}}</h4>
+    <!--<img src="{{artist.image_url}}"/>-->
+    <li *ngFor="let e of events"
+        class="list-group-item">
+      Date time:<i> {{e.datetime}}</i>
+      <br>On sale time: <i>{{e.on_sale_datetime}}</i>
+      <br>Description: <i>{{e.description}}</i>
+      <br>Country:<i> {{e.venue.country}}</i>
+      <br>City:<i> {{e.venue.city}}</i>
+
+    </li>
+    <p>{{event.artist_id}}</p>
+    <!--<p>{{artist.Plot}}</p>
+    -->
+  </div>
+
+</div>

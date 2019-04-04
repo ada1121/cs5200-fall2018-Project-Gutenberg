@@ -1,0 +1,142 @@
+<h2>Welcome Admin!</h2>
+<hr/><hr/>
+
+<!--Add Customer-->
+<div>
+  <a href="signup" class="btn btn-primary">Add Customer</a>
+  <button (click)="searchPerson()" class="btn btn-primary" style="margin-left: 40px">View Customers</button>
+</div>
+
+<!--search persons-->
+<div>
+  <li *ngFor="let p of persons" class ="list-group-item">
+    <i>Customer Id: {{p.id}} </i>
+    <br> <i>FirstName: {{p.firstName}}</i>
+    <br> <i>LastName: {{p.lastName}}</i>
+    <br> <i>Username: {{p.username}}</i>
+    <br> <button (click)="deletePerson(p.id)" class="btn btn-primary" style="margin-rignt: 60px"> Delete </button>
+    <a href="update/{{p.id}}">
+      <button (click)="passUpdatePerson(p.id)" class="btn btn-primary"> Update </button></a>
+  </li>
+</div>
+<!--View all users-->
+<hr/>
+<button (click)="searchAllUsers()" class="btn btn-primary">
+  View All Users
+</button>
+<div>
+    <li *ngFor="let u of users" class ="list-group-item">
+      <br> <i> User Id: {{u.id}} </i>
+      <br> <i> FirstName: {{u.firstName}} </i>
+      <br> <i> LastName: {{u.lastName}} </i>
+      <br> <i> Username: {{u.username}}</i>
+      <br> <button (click)="deletePerson(u.id)" class="btn btn-primary"> Delete </button>
+    </li>
+</div>
+<hr/>
+
+<!--create comment-->
+<div >
+  <a href="addcommentadmin" class="btn btn-primary">Add Comment</a>
+<!--search comments-->
+<button (click)="searchComment()" class="btn btn-primary" style="margin-left: 40px">
+  View Comments
+</button>
+</div>
+
+
+<!--show delete and update comment-->
+<div>
+  <li *ngFor="let c of comments" class ="list-group-item">
+    <br> <i> Comment Id: {{c.id}} </i>
+    <br> <i> Context: {{c.context}}</i>
+    <br> <button (click)="deleteComment(c.id)" class="btn btn-primary" style="margin-right: 40px"> Delete </button>
+    <a href="getcomment/{{c.id}}" class="btn-primary"> <button>Update </button></a>
+  </li>
+
+</div>
+<hr/>
+
+
+<!--search shows-->
+<div class="row">
+  <div class="col-6">
+    <h4>Search Artist</h4>
+    <div class="input-group">
+      <input [(ngModel)]="keyword" class="form-control">
+      <div class="input-group-append">
+        <button (click)="search(keyword)" class="btn btn-primary">
+          Search
+        </button>
+      </div>
+    </div>
+
+    <h4>Search Results</h4>
+    <ul class="list-group">
+      <i (click)="details(artist.name)"
+         class="list-group-item">
+        <img src="{{artist.image_url}}"
+             width="200px">
+        {{artist.name}}
+      </i>
+    </ul>
+  </div>
+
+  <div class="col-6">
+    <h4>Events of {{artist.name}}</h4>
+    <!--<img src="{{artist.image_url}}"/>-->
+    <li *ngFor="let e of events"
+        class="list-group-item">
+      Show Name: <i>{{e.id}}</i>
+      <br>Date time:<i> {{e.datetime}}</i>
+      <br>On sale time: <i>{{e.on_sale_datetime}}</i>
+      <br>Description: <i>{{e.description}}</i>
+      <br>Country:<i> {{e.venue.country}}</i>
+      <br>City:<i> {{e.venue.city}}</i>
+    </li>
+  </div>
+</div>
+
+<!--create show-->
+<hr/>
+<div>
+  <a href="addshow" class="btn btn-primary">Add Show</a>
+  <!--search shows-->
+  <button (click)="searchShow()" class="btn btn-primary" style="margin-left: 60px">
+    View Shows
+  </button>
+</div>
+<div>
+  <li *ngFor="let s of shows" class ="list-group-item">
+    <br> <i> Show Id: {{s.id}} </i>
+    <br> <i> Show Name: {{s.name}} </i>
+    <br> <i> Date: {{s.date}} </i>
+    <br> <i> Description: {{s.description}} </i>
+    <br> <button (click)="deleteShow(s.id)"> Delete </button>
+  </li>
+</div>
+<hr/>
+
+<!--Assign show-->
+<div>
+  <a href="updateshow" class="btn btn-primary" style="margin-right: 60px">Assign Show To Actor</a>
+  <a href="updateshow" class="btn btn-primary">Add Actor To Show</a>
+</div>
+
+<!--View ticket-->
+<hr/>
+<div>
+  <!--search tickets-->
+  <button (click)="searchTicket()" class="btn btn-primary">
+    View Tickets
+  </button>
+</div>
+<div>
+  <li *ngFor="let t of tickets" class ="list-group-item">
+    <br> <i> Show Id: {{t.id}} </i>
+    <br> <i> Show Name: {{t.showName}} </i>
+    <br> <i> Date: {{t.date}} </i>
+    <br> <i> Price: {{t.price}} </i>
+    <br> <button (click)="deleteTicket(t.id)" class="btn btn-primary"> Delete </button>
+  </li>
+</div>

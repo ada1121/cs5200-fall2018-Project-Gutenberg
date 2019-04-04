@@ -1,0 +1,92 @@
+<h2>Welcome Our Noble Guest!</h2>
+<hr/><hr/>
+
+<!--create and view own comment-->
+<div>
+  <!--<a href="addcomment/{{comment.customer_id}}" class="btn btn-primary">Add comment</a>-->
+  <a href="addcomment/{{customer.id}}" class="btn btn-primary">Add comment</a>
+  <button (click)="searchowncomment(customer.id)" class="btn btn-primary" style="margin-left: 60px">
+    View My Comment
+  </button>
+</div>
+
+<div>
+  <li *ngFor="let c1 of comments1" class ="list-group-item">
+    <br> <i>Comment Id: {{c1.id}}</i>
+    <br> <i>Context: {{c1.context}}</i>
+    <!--<br> <button (click)="deleteComment(c.id)"> delete </button>-->
+  </li>
+</div>
+
+<!--view all comments-->
+<hr/>
+<button (click)="searchComment()" class="btn btn-primary">
+  View All Comments
+</button>
+<div>
+  <li *ngFor="let c of comments" class ="list-group-item">
+    <br> <i>Comment Id: {{c.id}}</i>
+    <br> <i>Context: {{c.context}}</i>
+    <!--<br> <button (click)="deleteComment(c.id)"> delete </button>-->
+  </li>
+</div>
+
+
+
+<!--search shows and buy ticket-->
+<hr/>
+<div class="row">
+  <div class="col-6">
+    <h4>Search Artist</h4>
+    <div class="input-group">
+      <input [(ngModel)]="keyword" class="form-control">
+      <div class="input-group-append">
+        <button (click)="search(keyword)" class="btn btn-primary">
+          Search
+        </button>
+      </div>
+    </div>
+
+    <h4>Search Results</h4>
+    <ul class="list-group">
+      <i (click)="details(artist.name)"
+         class="list-group-item">
+        <img src="{{artist.image_url}}"
+             width="200px">
+        {{artist.name}}
+      </i>
+    </ul>
+  </div>
+
+  <div class="col-6">
+    <h4>Events of {{artist.name}}</h4>
+    <!--<img src="{{artist.image_url}}"/>-->
+    <li *ngFor="let e of events"
+        class="list-group-item">
+      Show Name: <i>{{e.id}}</i>
+      <br>Date time:<i> {{e.datetime}}</i>
+      <br>On sale time: <i>{{e.on_sale_datetime}}</i>
+      <br>Description: <i>{{e.description}}</i>
+      <br>Country:<i> {{e.venue.country}}</i>
+      <br>City:<i> {{e.venue.city}}</i>
+      <br>
+      <a href="ticket/{{customer.id}}"><button>Buy</button></a>
+    </li>
+
+  </div>
+</div>
+
+
+<hr/>
+<button (click)="searchcustomerticket(customer.id)" class="btn btn-primary">View bought ticket</button>
+<div>
+  <li *ngFor="let t of tickets"
+      class="list-group-item">
+    Ticket Id:<i> {{t.id}}</i>
+    <br>Price: <i>{{t.price}}</i>
+    <br>Showname: <i>{{t.showName}}</i>
+    <br>Date:<i> {{t.date}}</i>
+    <br>
+    <button (click)="deleteTicketById1(t.id)" class="btn btn-primary">Delete</button>
+  </li>
+</div>

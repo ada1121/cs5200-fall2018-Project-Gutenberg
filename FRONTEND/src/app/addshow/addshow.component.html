@@ -1,0 +1,39 @@
+<h3>Create Show</h3>
+
+<div [hidden]="submitted" style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="input-group">
+      <div><p>Show Name</p>
+        <input [(ngModel)]="show.name" class="form-control" name="name">
+      </div>
+
+      <div><p>Date</p>
+        <input [(ngModel)]="show.date" class="form-control" name="date">
+      </div>
+
+      <div><p>Description</p>
+        <input [(ngModel)]="show.description" class="form-control" name="description">
+      </div>
+
+      <div><p>Actor Id</p>
+        <input [(ngModel)]="show.actor_id" class="form-control" name="actor_id">
+      </div>
+
+      <hr />
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-success" (click)="createShows(show.name,
+        show.date, show.description, show.actor_id)">
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <div class="btn-group btn-group-sm">
+    <button class="btn btn-dark" (click)="goBack()">Back</button>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<h3>Buy Ticket</h3>
+
+<div [hidden]="submitted" style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="input-group">
+      <div><p>Show Name</p>
+        <input [(ngModel)]="ticket.showName" class="form-control" name="showName">
+      </div>
+
+      <!--<div><p>Customer Id</p>-->
+        <!--<input [(ngModel)]="ticket.customer_id" class="form-control" name="customer_id">-->
+      <!--</div>-->
+
+      <div><p>Location Id</p>
+        <input [(ngModel)]="ticket.location_id" class="form-control" name="location_id">
+      </div>
+
+      <div><p>Staff Id</p>
+        <input [(ngModel)]="ticket.staff_id" class="form-control" name="staff_id">
+      </div>
+
+
+      <hr />
+      <div class="input-group-append">
+        <!--<button type="submit" class="btn btn-success" (click)="addTicket(ticket.showName, ticket.customer_id,-->
+        <!--ticket.location_id, ticket.staff_id)">-->
+          <button type="submit" class="btn btn-success" (click)="addTicket(ticket.showName, ticket.location_id,
+          ticket.staff_id)">
+          Submit
+        </button>
+      </div>
+    </div>
+
+    <!--<button class="btn btn-dark" (click)="goBack()">Back</button>-->
+
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <div class="btn-group btn-group-sm">
+    <button class="btn btn-dark" (click)="goBack()">Back</button>
+  </div>
+</div>

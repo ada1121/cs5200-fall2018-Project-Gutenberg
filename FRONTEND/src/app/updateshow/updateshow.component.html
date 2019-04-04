@@ -1,0 +1,31 @@
+<h2>Update Show </h2>
+
+<div [hidden]="submitted" style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="input-group">
+      <div><p>Actor Id</p>
+        <input [(ngModel)]="actor_id" class="form-control" name="actor_id">
+      </div>
+
+      <div><p>Show Id</p>
+        <input [(ngModel)]="show_id" class="form-control" name="show_id">
+      </div>
+
+      <hr />
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-success" (click)="updateShow(actor_id, show_id)">
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <div class="btn-group btn-group-sm">
+    <button class="btn btn-dark" (click)="goBack()">Back</button>
+  </div>
+</div>
